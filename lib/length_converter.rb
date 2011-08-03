@@ -27,7 +27,17 @@ class LengthConverter
   def thirty_seconds_of_an_inch_to_string!
     unless @length.thirty_seconds_of_an_inch == 0
       add_spacing
-      @output_string << "#{@length.thirty_seconds_of_an_inch}/32 of an inch"
+      if @length.thirty_seconds_of_an_inch % 16 == 0
+        @output_string << "#{@length.thirty_seconds_of_an_inch/16}/2 of an inch"
+      elsif @length.thirty_seconds_of_an_inch % 8 == 0
+        @output_string << "#{@length.thirty_seconds_of_an_inch/8}/4 of an inch"
+      elsif @length.thirty_seconds_of_an_inch % 4 == 0
+        @output_string << "#{@length.thirty_seconds_of_an_inch/4}/8 of an inch"
+      elsif @length.thirty_seconds_of_an_inch % 2 == 0
+        @output_string << "#{@length.thirty_seconds_of_an_inch/2}/16 of an inch"
+      else
+        @output_string << "#{@length.thirty_seconds_of_an_inch}/32 of an inch"
+      end
     end
   end
 
